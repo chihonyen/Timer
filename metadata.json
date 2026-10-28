@@ -1,6 +1,8 @@
 {
-  "name": "FocusTimer - 簡約極速倒數計時器",
+  "name": "Timer - 倒數計時器",
   "description": "現代化倒數計時器，支援 1~60 分鐘彈性設定、大字體圓環進度、Time's Up 聲光警示，並提供可一鍵複製與下載直接部署到 GitHub Pages 的單一 index.html 檔案。",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
