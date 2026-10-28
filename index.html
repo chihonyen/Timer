@@ -139,6 +139,9 @@
         <div class="text-xs text-slate-400 mt-2">
           總時長：<span id="totalLabel" class="font-semibold text-slate-300">25 分鐘</span>
         </div>
+        <div class="mt-1 flex items-center justify-center text-center">
+          <span id="percentLabel" class="font-mono text-xs sm:text-sm font-bold text-indigo-400 tabular-nums">100%</span>
+        </div>
       </div>
     </div>
 
@@ -227,6 +230,7 @@
     const timerStatusBadge = document.getElementById('timerStatusBadge');
     const progressCircle = document.getElementById('progressCircle');
     const totalLabel = document.getElementById('totalLabel');
+    const percentLabel = document.getElementById('percentLabel');
     const timeSlider = document.getElementById('timeSlider');
     const sliderValueDisplay = document.getElementById('sliderValueDisplay');
     const primaryBtn = document.getElementById('primaryBtn');
@@ -342,6 +346,14 @@
       const fraction = totalSeconds > 0 ? (remainingSeconds / totalSeconds) : 0;
       progressCircle.style.strokeDashoffset = CIRCUMFERENCE * (1 - fraction);
       progressCircle.setAttribute('stroke', isTimesUp ? '#f43f5e' : (fraction <= 0.15 ? '#ef4444' : (fraction <= 0.35 ? '#f59e0b' : '#6366f1')));
+
+      const percent = Math.round(fraction * 100);
+      if (percentLabel) {
+        percentLabel.textContent = percent + '%';
+        percentLabel.className = 'font-mono text-xs sm:text-sm font-bold tabular-nums ' + (
+          isTimesUp ? 'text-rose-400' : (percent <= 15 ? 'text-rose-400' : (percent <= 35 ? 'text-amber-400' : 'text-indigo-400'))
+        );
+      }
     }
 
     function applyMinutes(mins) {

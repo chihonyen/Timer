@@ -429,11 +429,22 @@ export default function App() {
               </div>
             )}
 
-            <div className="text-xs text-slate-400 mt-2 flex items-center gap-2">
-              <span>總計 {Math.round(totalSeconds / 60)} 分鐘</span>
-              <span>·</span>
-              <span className="tabular-nums font-mono">
-                {Math.round(fraction * 100)}% 剩餘
+            <div className="text-xs text-slate-400 mt-2">
+              總時長：<span className="font-semibold text-slate-300">{Math.round(totalSeconds / 60)} 分鐘</span>
+            </div>
+            <div className="mt-1 flex items-center justify-center text-center">
+              <span
+                className={`font-mono text-xs sm:text-sm font-bold tabular-nums ${
+                  isTimesUp
+                    ? 'text-rose-400'
+                    : Math.round(fraction * 100) <= 15
+                    ? 'text-rose-400'
+                    : Math.round(fraction * 100) <= 35
+                    ? 'text-amber-400'
+                    : 'text-indigo-400'
+                }`}
+              >
+                {Math.round(fraction * 100)}%
               </span>
             </div>
           </div>
